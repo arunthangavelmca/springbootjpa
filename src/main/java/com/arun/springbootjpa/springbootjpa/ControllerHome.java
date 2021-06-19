@@ -22,7 +22,11 @@ public class ControllerHome {
     @GetMapping("/RestAPI/v1/getCustomer/{id}")
     public Optional<Customer> getCustomer(@PathVariable (name="id") String id){
         System.out.println(id);
-        Optional<Customer> resp=customerService.getCustomer(id);
+        Optional<Customer> resp;
+        if(id.equals("100")){
+            throw new IllegalArgumentException();
+        }else{
+        resp=customerService.getCustomer(id);}
         return resp;
     }
 
